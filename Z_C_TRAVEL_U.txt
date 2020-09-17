@@ -1,0 +1,68 @@
+@EndUserText.label: 'Consumption View - Travel (UnManaged)'
+@AccessControl.authorizationCheck: #NOT_REQUIRED
+@Metadata.allowExtensions: true
+@Search.searchable: true
+
+@UI:{ headerInfo: {
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: {
+        type: #STANDARD,
+        value: 'TravelID'
+    }
+} }
+define root view entity Z_C_TRAVEL_U
+  as projection on Z_I_TRAVEL_U
+{
+      //z_i_travel_u
+    
+  key TravelID,
+
+      @Consumption.valueHelpDefinition: [{
+
+          entity: {
+              name: '/DMO/I_Agency',
+              element: 'AgencyID'
+          }}]
+      @ObjectModel.text.element: ['AgencyName']
+      @Search.defaultSearchElement: true
+      AgencyID,
+      _Agency.Name        as AgencyName,
+
+      @Consumption.valueHelpDefinition: [{
+
+               entity: {
+                   name: '/DMO/I_Customer',
+                   element: 'CustomerID'
+               }}]
+      @ObjectModel.text.element: ['CustomerName']
+      @Search.defaultSearchElement: true
+
+      CustomerID,
+      _Customer.FirstName as CustomerName,
+
+      BeginDate,
+      EndDate,
+      BookingFee,
+      TotalPrice,
+
+      @Consumption.valueHelpDefinition: [{
+
+             entity: {
+                 name: 'I_Currency',
+                 element: 'Currency'
+             }}]
+      @Search.defaultSearchElement: true
+      CurrencyCode,
+
+
+      Memo,
+      Status,
+      LastChangedAt,
+      /* Associations */
+      //z_i_travel_u
+      _Agency,
+      _Booking :redirected to composition child Z_C_BOOKING_U,
+      _Currency,
+      _Customer
+}

@@ -1,0 +1,7 @@
+@EndUserText.label: 'Service Definition'
+define service ZSD_Travel_booking {
+  expose Z_C_TRAVEL_U as Travel;
+  expose Z_C_BOOKING_U as booking;
+  expose I_Currency as Currency;
+  expose I_Country as Country;
+}

@@ -1,0 +1,69 @@
+@Metadata.layer: #CUSTOMER
+@UI:{ headerInfo: {
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: {
+        type: #STANDARD,
+        value: 'TravelID'
+    }
+} }
+annotate view Z_C_TRAVEL_U with
+{
+  //Z_C_TRAVEL_U
+  @UI.facet: [{
+      id: 'Travel',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Travel',
+      type: #IDENTIFICATION_REFERENCE
+  },{
+
+      id: 'Booking',
+      purpose: #STANDARD,
+      position: 20,
+      label: 'Booking',
+      type: #LINEITEM_REFERENCE,
+      // targetElement: '_Booking'
+  }]
+
+  @UI:{ lineItem: [{position: 10,importance: #HIGH }],
+         identification: [{position: 10 }],
+         selectionField: [{position: 10 }] }
+  TravelID;
+
+  @UI:{ lineItem: [{position: 20,importance: #HIGH }],
+        identification: [{position: 20 }],selectionField: [{position: 20 }] }
+  AgencyID;
+
+  @UI:{ lineItem: [{position: 30,importance: #HIGH }],
+         identification: [{position: 30 }],selectionField: [{position: 30 }] }
+  CustomerID;
+
+  @UI:{ lineItem: [{position: 40,importance: #MEDIUM }],
+       identification: [{position: 40 }] }
+
+  BeginDate;
+
+  @UI:{ lineItem: [{position: 41,importance: #MEDIUM }],
+     identification: [{position: 41 }] }
+  EndDate;
+
+  @UI.identification: [{position: 42 }]
+  BookingFee;
+
+  @UI.identification: [{position: 43 }]
+  TotalPrice;
+
+
+  @UI.identification: [{position: 45,label: 'Comment' }]
+  Memo;
+
+    @UI.lineItem: [{position: 50,importance: #HIGH },
+                               { type: #FOR_ACTION,
+                                 dataAction: 'set_status_booked' ,
+                                 label: 'Set to Booked'}]
+    Status;
+//  @UI:{ lineItem: [{position: 50,importance: #MEDIUM }],
+//     identification: [{position: 50 }] }
+//  Status;
+}

@@ -1,0 +1,57 @@
+@Metadata.layer: #PARTNER
+@UI.headerInfo: {
+    typeName: 'Booking',
+    typeNamePlural: 'Bookings',
+    title: {
+        type: #STANDARD,
+        label: 'Booking',
+        value: 'BookingId'
+    }
+}
+annotate view Z_C_BOOKING_U with
+{
+  //Z_C_BOOKING_U
+
+  @UI.facet: [{id: 'Booking',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Booking',
+                position: 10 }]
+  @UI:{lineItem: [{  position: 10,importance: #HIGH }],
+                identification: [{position: 10 }]
+  }
+  BookingID;
+
+  @UI:{lineItem: [{position: 20,importance: #HIGH }],
+        identification: [{position: 20 }]
+  }
+  BookingDate;
+
+  @UI:{lineItem: [{position: 30,importance: #HIGH }],
+      identification: [{position: 30 }]
+  }
+  CustomerID;
+
+  @UI:{lineItem: [{position: 40,importance: #HIGH }],
+       identification: [{position: 40 }]
+  }
+  AirlineID;
+  @UI:{lineItem: [{position: 50,importance: #HIGH }],
+        identification: [{position: 50 }]
+  }
+  ConnectionID;
+
+  @UI:{lineItem: [{position: 60,importance: #HIGH }],
+      identification: [{position: 60 }]
+  }
+
+  FlightDate;
+
+  @UI:{lineItem: [{position: 70,importance: #HIGH }],
+      identification: [{position: 70 }]
+  }
+  FlightPrice;
+  
+  
+  
+}

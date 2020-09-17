@@ -1,0 +1,20 @@
+projection;
+
+define behavior for Z_C_TRAVEL_U alias Travel use etag {
+
+  use create;
+  use update;
+  use delete;
+
+  use action set_status_booked;
+
+  use association _Booking { create; }
+}
+
+define behavior for Z_C_BOOKING_U alias booking
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+}
